@@ -1,25 +1,29 @@
 import { CloseButton } from "./CloseButton";
 
+import bugImage from "../assets/bug.svg";
+import ideaImage from "../assets/idea.svg";
+import thoughtImage from "../assets/thought.svg";
+
 const feedbackTypes = {
   BUG: {
     title: "Problema",
     image: {
-      source: "",
-      alt: "",
+      source: bugImage,
+      alt: "Imagem de um inseto",
     },
   },
   IDEA: {
     title: "Ideia",
     image: {
-      source: "",
-      alt: "",
+      source: ideaImage,
+      alt: "Imagem de uma lâmpada",
     },
   },
   OTHER: {
     title: "Outro",
     image: {
-      source: "",
-      alt: "",
+      source: thoughtImage,
+      alt: "Imagem de um balão de pensamento",
     },
   },
 };
@@ -34,7 +38,14 @@ export function WidgetForm() {
       </header>
 
       <div className="flex py-8 gap-2 w-full">
-        <button></button>
+        {Object.entries(feedbackTypes).map(([key, value]) => {
+          return (
+            <button key={key}> 
+              <img src={value.image.source} alt={value.image.alt} />
+              <span>{value.title}</span>
+            </button>
+          )
+        })}
       </div>
       <p>hello</p>
 
